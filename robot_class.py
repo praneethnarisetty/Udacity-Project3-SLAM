@@ -94,12 +94,12 @@ class robot:
             landmark = self.landmarks[landmark_index]
             landmark_x = landmark[0]
             landmark_y = landmark[1]
-            dx_calculated = self.x - landmark_x
-            dy_calculated = self.y - landmark_y
+            dx_calculated = landmark_x - self.x  
+            dy_calculated =  landmark_y - self.y
             noise = self.rand()
             dx = dx_calculated + noise * self.measurement_noise
             dy = dy_calculated + noise * self.measurement_noise
-            radius = self.measurement_range
+            radius = if self.measurement_range == -1
             if dx > -radius and dx < radius and dy > -radius and dy < radius:
                 measurements.append([landmark_index,dx,dy])
                 
